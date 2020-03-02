@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>CSS 練習中！</title>
+    <link rel="stylesheet" href="../css/blog.css">
+</head>
+<form action=" ../update.php" method="post">
+	<div>
+		<label for="title">タイトル</label>
+		<input id="title" type="text" name="view_title" value=" <?php $_POST['post_title']  ?>">
+	</div>
+	<div>
+		<label for="content">内容</label>
+		<textarea id="content" name="view_content"></textarea>
+	</div>
+	<input type="submit" name="btn_submit" value="登録">
+</form>
+</html>
