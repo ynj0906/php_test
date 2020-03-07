@@ -28,12 +28,12 @@
     $dotenv->load();
 
 
-    $host = $_ENV["HOST"];
+    // $host = $_ENV["HOST"];
     $port = $_ENV['port'];
     $dbname = $_ENV['dbname'];
     $user = $_ENV['user'];
     $password = $_ENV['PASSWORD'];
-    $conn = " host=$host port=$port dbname=$dbname user=$user password=$password";
+    $conn = "  port=$port dbname=$dbname user=$user password=$password";
     $link = pg_connect($conn);
 
 ?>  
