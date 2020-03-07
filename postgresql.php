@@ -13,13 +13,14 @@
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__, "config/.env");
     $dotenv->load();
 
-    $host = $_ENV["HOST"];
+    // $host = $_ENV["HOST"];
     $port = $_ENV['port'];
     $dbname = $_ENV['dbname'];
     $user = $_ENV['user'];
     $password = $_ENV['PASSWORD'];
 
-    $conn = " host=$host port=$port dbname=$dbname user=$user password=$password";
+    $conn = " port=$port dbname=$dbname user=$user password=$password";
+
     $link = pg_connect($conn);
     $result = pg_query($link, "SELECT * FROM post");
     $arr = pg_fetch_all($result);
@@ -31,39 +32,41 @@
         </header>
         <div id="create">
             <form action="html/create.html" method="post">
-            <button type="submit">新規作成</button>
+                <button type="submit">新規作成</button>
             </form>
         </div>
 
         <div class="contents">
             <?php
             foreach ($arr as $arrr) {
-                ?>
+            ?>
 
                 <div id="contents_main">
-                    <a href='detail.php?post_id=<?php echo $arrr["post_id"]; ?>'>
-                        <?php echo $arrr["post_title"];
+                    <div class="title">
+                        <a href='detail.php?post_id=<?php echo $arrr["post_id"]; ?>'>
+                            <?php echo $arrr["post_title"];
+                            ?>
+                        </a>
+                    </div>
+                    <div class=contents>
+                        <?php
+                        echo '<br>';
+                        echo $arrr["post_content"];
+                        echo '<br>';
+                        echo $arrr["time"];
                         ?>
-                    </a>
-
+                    </div>
+                </div>
                 <?php
-                echo $arrr["post_content"];
-                echo '<br>';
-
+            }
+                ?>
+                
  
-// 出力する
-
-                ?>
-                 </div>
-        <?php  
-        }
-            ?> 
-
-                <?php
+                <!-- <?php
                 unset($value);
-                ?>
-               
+                ?> -->
         </div>
+       
     </div>
 
     <?php

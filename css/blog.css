@@ -19,7 +19,10 @@ header {
 
 #contents_main{
 margin:20px;
-
+border: solid 1px #000000;
+border-radius: 1em;	
+margin:20px;
+padding:20px;
 }
 
 label {
